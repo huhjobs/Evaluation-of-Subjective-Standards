@@ -1,0 +1,31 @@
+TITLE:
+    Image-based Interrater Agreement Latent Class Analysis with Majority Vote.
+
+DATA:
+    FILE            = LesionLCA.dat;
+
+VARIABLE:
+    NAMES           = ID R11 R14 R15 R16 R20 R21 R23 R26 R28 R29;
+    USEVARIABLES    = R11 R14 R15 R16 R20 R21 R23 R26 R28 R29;
+    CATEGORICAL     = R11-R29;
+    IDVARIABLE      = ID;
+    
+    CLASSES         = c(2); ! 2-latent-class LCA model
+       
+ANALYSIS:
+    TYPE            = MIXTURE; ! LCA model
+
+!PLOT:
+    
+SAVEDATA:
+    FILE            = lesionlca2_save.txt;
+    SAVE            = cprob;
+    FORMAT          = free;
+
+MODEL:
+    %OVERALL%    
+
+OUTPUT:
+    tech11 tech14; !likelihood-ratio
+
+

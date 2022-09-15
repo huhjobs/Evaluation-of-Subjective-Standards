@@ -1,0 +1,29 @@
+TITLE:
+    Image-based Interrater Agreement Latent Class Analysis.
+
+DATA:
+    FILE            = ImageLCA.dat;
+
+VARIABLE:
+    NAMES           = ID R11_1 R14_1 R15_1 R16_1 R20_1 R21_1 R23_1 R26_1 R28_1 R29_1;
+    USEVARIABLES    = R11_1 R14_1 R15_1 R16_1 R20_1 R21_1 R23_1 R26_1 R28_1 R29_1;
+    CATEGORICAL     = R11_1-R29_1;
+    IDVARIABLE      = ID;
+    
+    CLASSES         = c(2); ! 2-latent-class LCA model
+       
+ANALYSIS:
+    TYPE            = MIXTURE; ! LCA model
+
+!PLOT:
+    
+SAVEDATA:
+    FILE            = lca2_save.txt;
+    SAVE            = cprob;
+    FORMAT          = free;
+
+MODEL:
+    %OVERALL%    
+
+OUTPUT:
+    tech11 tech14; !likelihood-ratio
